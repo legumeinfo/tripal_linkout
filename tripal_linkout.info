@@ -1,0 +1,13 @@
+name = Tripal Linkouts
+description = Generates a list of links for a feature depending on its species
+core = 7.x
+biomaterial = tripal_linkout
+package = Tripal
+configure = admin/tripal/chado/tripal_linkout
+
+version = 7.x-2.0-rc1
+dependencies[] = tripal_core
+dependencies[] = tripal_views
+dependencies[] = tripal_organism
+dependencies[] = tripal_cv
+dependencies[] = tripal_db

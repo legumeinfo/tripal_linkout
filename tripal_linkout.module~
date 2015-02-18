@@ -1,0 +1,30 @@
+B0;95;c<?php
+/**
+ * @file
+ * The Linkout module generates links for a feature
+ */
+require_once 'includes/tripal_linkout.inc';
+
+function tripal_linkout_help($path, $arg) {
+    switch ($path) {
+    case "admin/help#tripal_linkout":
+        return '<p>' . t("Generates external links") . '</p>';
+        break;
+    }
+} 
+
+function tripal_linkout_menu() {
+    $items = array();
+    // create a route for viewing json of all phylonodes having this phylotree_id
+    $items['phylotree_links/%/%/%/%/json'] = array(
+        'page callback' => 'tripal_linkout_json',
+        'page arguments' => array(2, 3, 4),
+//        'delivery callback' => 'drupal_json_output',
+//        'access arguments' => array('access content'),
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE // allow all anonymous http clients
+    );
+
+    return $items;
+
+}
