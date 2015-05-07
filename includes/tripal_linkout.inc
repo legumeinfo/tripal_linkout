@@ -32,7 +32,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
-            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!$gene?organism=Pvulgaris&searchText=locusName:' . $gene,
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3253&searchText=' . $gene,
             'text' => 'view at Phytozome: ' . $gene,
         );
         $link[] = array(
