@@ -119,13 +119,60 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         );
     }
     else if ($genus == 'Zea' && $species == 'mays') {
+	$gene = preg_replace('/_P\d+$/','',$gene);
         $link[] = array(
-            'href' => 'http://maizegdb.org/cgi-bin/displaygenemodelrecord.cgi?id=' . $gene,
+            'href' => 'http://maizegdb.org/gene_center/gene?id=' . $gene,
             'text' => 'view at MaizeGDB: ' . $gene,
         );
         $link[] = array(
             'href' => 'http://www.gramene.org/Zea_mays/Gene/Summary?g=' . $gene,
             'text' => 'view at Gramene: ' . $gene,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4431&searchText=' . $gene,
+            'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Oryza' && $species == 'sativa') {
+        $link[] = array(
+            'href' => 'http://rice.plantbiology.msu.edu/cgi-bin/gbrowse/rice/?name=' . $gene,
+            'text' => 'view at MSU: ' . $gene,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3301&searchText=' . $gene,
+            'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Vitis' && $species == 'vinifera') {
+        $link[] = array(
+            'href' => 'http://www.genoscope.cns.fr/cgi-bin/ggb/vitis/12X/gbrowse/vitis/?name=' . $gene,
+            'text' => 'view at Genoscope: ' . $gene,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=2299&searchText=' . $gene,
+            'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Solanum' && $species == 'lycopersicum') {
+        $link[] = array(
+            'href' => 'http://solgenomics.net/jbrowse/current/?data=data%2Fjson%2FSL2.50&loc=' . $gene . '&tracks=DNA%2Cgene_models&highlight=',
+            'text' => 'view at Sol Genomics Network: ' . $gene,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3308&searchText=' . $gene,
+            'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Prunus' && $species == 'persica') {
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=2295&searchText=' . $gene,
+            'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Amborella' && $species == 'trichopoda') {
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4851&searchText=' . $transcript,
+            'text' => 'view at Phytozome: ' . $gene,
         );
     }
 
