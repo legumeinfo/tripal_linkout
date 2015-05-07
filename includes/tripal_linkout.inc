@@ -23,10 +23,12 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
             'text' => 'view at SoyKB: ' . $gene,
         );
 
+/*
         $link[] = array(
             'href' => 'http://www.genomicus.biologie.ens.fr/genomicus-plants/cgi-bin/search.pl?view=default&amp;query=' . $gene,
             'text' => 'view at Genomicus: ' . $gene,
         );
+*/
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
@@ -34,8 +36,20 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
             'text' => 'view at Phytozome: ' . $gene,
         );
         $link[] = array(
-            'href' => 'http://phavu.comparative-legumes.org/gb2/gbrowse/Pv1.0/?name=' . $gene,
-            'text' => 'view at LIS GBrowse: ' . $gene,
+            'href' => '/gbrowse_phavu1.0?query=name=' . $gene,
+            'text' => 'view at LIS Pv1.0 GBrowse: ' . $gene,
+        );
+    }
+    else if ($genus == 'Cicer' && $species == 'arietinum') {
+        $link[] = array(
+            'href' => '/gbrowse_cicar1.0?query=name=' . $gene,
+            'text' => 'view at LIS Ca1.0 GBrowse: ' . $gene,
+        );
+    }
+    else if ($genus == 'Cajanus' && $species == 'cajan') {
+        $link[] = array(
+            'href' => '/gbrowse_cajca1.0?query=name=' . $gene,
+            'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene,
         );
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
@@ -44,13 +58,15 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
             'text' => 'view at JCVI: ' . $transcript,
         );
         $link[] = array(
-            'href' => 'http://medtr.comparative-legumes.org/gb2/gbrowse/Mt4.0?name=' . $gene,
+            'href' => '/gbrowse_medtr4.0?query=name=' . $gene,
             'text' => 'view at LIS Mt4.0 GBrowse: ' . $gene,
         );
+/*
         $link[] = array(
             'href' => 'http://medtr.comparative-legumes.org/gb2/gbrowse/Mt3.5.1?name=' . $gene,
             'text' => 'view at JLIS Mt3.5.1 GBrowse: ' . $gene,
         );
+*/
         $link[] = array(
             'href' => 'http://www.medicagohapmap.org/fgb2/gbrowse/mt35/?name=' . $gene,
             'text' => 'view at Mt HapMap: ' . $gene,
@@ -59,28 +75,32 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4432&searchText=' . $gene,
             'text' => 'view at Phytozome: ' . $gene,
         );
+/*
         $link[] = array(
-            'href' => 'http://plantgrn.noble.org/LegumeIP/getseq.do?seq_acc=IMGA|' . $gene,
-            'text' => 'view at LegumeIP: ' . $gene,
+            'href' => 'http://plantgrn.noble.org/LegumeIP/getseq.do?dataset_id=4&seq_acc=IMGA|' . $transcript,
+            'text' => 'view at LegumeIP: ' . $transcript,
         );
+*/
         $link[] = array(
             'href' => 'http://www.ncbi.nlm.nih.gov/gene/?term=' . $gene,
             'text' => 'view at NCBI Gene: ' . $gene,
         );
+/*
         $link[] = array(
             'href' => 'http://www.genomicus.biologie.ens.fr/genomicus-plants/cgi-bin/search.pl?view=default&amp;query=MTR_' . str_replace("Medtr","", $gene),
             'text' => 'view at Genomicus: ' . $gene,
         );
+*/
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
-            'href' => 'http://peanutbase.org/gb2/gbrowse/Aradu1.0/?q=' . $gene . ';dbid=gene_models',
+            'href' => 'http://peanutbase.org/gbrowse_aradu1.0?query=name=' . $gene . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene,
         );            
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
         $link[] = array(
-            'href' => 'http://peanutbase.org/gb2/gbrowse/Araip1.0/?q=' . $gene . ';dbid=gene_models',
+            'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene,
         );        
     }
@@ -96,6 +116,16 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=2296&searchText=' . $gene,
             'text' => 'view at Phytozome: ' . $gene,
+        );
+    }
+    else if ($genus == 'Zea' && $species == 'mays') {
+        $link[] = array(
+            'href' => 'http://maizegdb.org/cgi-bin/displaygenemodelrecord.cgi?id=' . $gene,
+            'text' => 'view at MaizeGDB: ' . $gene,
+        );
+        $link[] = array(
+            'href' => 'http://www.gramene.org/Zea_mays/Gene/Summary?g=' . $gene,
+            'text' => 'view at Gramene: ' . $gene,
         );
     }
 
