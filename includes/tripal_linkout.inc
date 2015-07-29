@@ -9,6 +9,11 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
 
     if ($genus == 'Glycine' && $species == 'max') {
         $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/glyma.' . $gene . '/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+
+        $link[] = array(
             'href' => 'http://www.soybase.org/sbt/search/search_results.php?category=FeatureName&search_term=' . $gene,
             'text' => 'view at SoyBase: ' . $gene,
         );
@@ -32,6 +37,10 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/phavu.' . $gene . '/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3253&searchText=' . $gene,
             'text' => 'view at Phytozome: ' . $gene,
         );
@@ -42,17 +51,29 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Cicer' && $species == 'arietinum') {
         $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/cicar.' . $gene . '_gene/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
             'href' => '/gbrowse_cicar1.0?query=name=' . $gene,
             'text' => 'view at LIS Ca1.0 GBrowse: ' . $gene,
         );
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
         $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/cajca.' . $gene . '_gene/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
             'href' => '/gbrowse_cajca1.0?query=name=' . $gene,
             'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene,
         );
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
+        $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/medtr.' . $gene . '/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
         $link[] = array(
             'href' => 'http://medicago.jcvi.org/medicago/jbrowse/?data=data%2Fjson%2Fmedicago&loc='.$transcript.'&tracks=DNA%2Cgene_models&highlight=',
             'text' => 'view at JCVI: ' . $transcript,
@@ -94,11 +115,19 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/aradu.' . $gene . '/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_aradu1.0?query=name=' . $gene . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene,
         );            
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
+        $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/araip.' . $gene . '/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
         $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene,
