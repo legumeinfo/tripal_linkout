@@ -49,6 +49,16 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
             'text' => 'view at LIS Pv1.0 GBrowse: ' . $gene,
         );
     }
+    else if ($genus == 'Lotus' && $species == 'japonicus') {
+        $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/lotja.' . '$gene/',
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
+            'href' => '/gbrowse_lotja3.0?query=name=' . $gene,
+            'text' => 'view at LIS Lj3.0 GBrowse: ' . $gene,
+        );
+    }
     else if ($genus == 'Cicer' && $species == 'arietinum') {
         $link[] = array(
             'href' => '/lis_gene_families/chado/context_viewer/search/cicar.' . $gene . '_gene/',
@@ -67,6 +77,16 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         $link[] = array(
             'href' => '/gbrowse_cajca1.0?query=name=' . $gene,
             'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene,
+        );
+    }
+    else if ($genus == 'Vigna' && $species == 'radiata') {
+        $link[] = array(
+            'href' => '/lis_gene_families/chado/context_viewer/search/vigra.' . $gene ,
+            'text' => 'Find similar genomic contexts for : ' . $gene,
+        );
+        $link[] = array(
+            'href' => '/gbrowse_vigra1.0?query=name=' . $gene,
+            'text' => 'view at LIS Vr1.0 GBrowse: ' . $gene,
         );
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
