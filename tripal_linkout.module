@@ -22,6 +22,12 @@ function tripal_linkout_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );
+    $items['gene_links/%/json'] = array(
+        'page callback' => 'gene_linkout_json',
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE // allow all anonymous http clients
+    );
 
     return $items;
 

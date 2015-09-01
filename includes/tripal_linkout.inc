@@ -4,6 +4,28 @@
  * Menu callbacks.
  */
 
+/**
+ * This version takes the gene "name", infers the species from the 5-letter prefix and delegates to the more fully specified version
+ */
+//FIXME: a dreadful maintenance hack. putting in for now to bridge the context viewer to use of this service, but not sure it has the needed genus species data
+const TRIPAL_LINKOUT_SPECIES_LOOKUP = [
+	'medtr' => ['Medicago','truncatula'],
+	'lotja' => ['Lotus','japonicus'],
+	'cicar' => ['Cicer','arietinum'],
+	'glyma' => ['Glycine','max'],
+	'phavu' => ['Phaseolus','vulgaris'],
+	'cajca' => ['Cajanus','cajan'],
+	'vigra' => ['Vigna','radiata'],
+];
+function gene_linkout_json($gene) {
+    $species_prefix = substr($gene, 0, 5);
+  //  error_log("species prefix is " + $species_prefix);
+    $gene = substr($gene, 6);
+    $genus = TRIPAL_LINKOUT_SPECIES_LOOKUP[$species_prefix][0];
+    $species = TRIPAL_LINKOUT_SPECIES_LOOKUP[$species_prefix][1];
+    tripal_linkout_json($genus, $species, $gene, '');
+}
+
 function tripal_linkout_json($genus,$species,$gene,$transcript) {
     $link =  [];
 
@@ -51,7 +73,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/lotja.' . '$gene/',
+            'href' => '/lis_gene_families/chado/context_viewer/search/lotja.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
