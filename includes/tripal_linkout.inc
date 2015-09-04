@@ -91,6 +91,8 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         );
     }
     else if ($genus == 'Cicer' && $species == 'arietinum') {
+        #hack: from the trees, the _gene is missing, but from the context viewer it is present
+	$gene = preg_replace('/_gene$/','',$gene);
         $link[] = array(
             'href' => '/lis_gene_families/chado/context_viewer/search/cicar.' . $gene . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
@@ -101,6 +103,8 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         );
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
+        #hack: from the trees, the _gene is missing, but from the context viewer it is present
+	$gene = preg_replace('/_gene$/','',$gene);
         $link[] = array(
             'href' => '/lis_gene_families/chado/context_viewer/search/cajca.' . $gene . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
