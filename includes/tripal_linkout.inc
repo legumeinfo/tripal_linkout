@@ -16,6 +16,15 @@ const TRIPAL_LINKOUT_SPECIES_LOOKUP = [
 	'phavu' => ['Phaseolus','vulgaris'],
 	'cajca' => ['Cajanus','cajan'],
 	'vigra' => ['Vigna','radiata'],
+	'aradu' => ['Arachis','duranensis'],
+	'araip' => ['Arachis','ipaensis'],
+	'arath' => ['Arabidopsis','thaliana'],
+	'ambtr' => ['Amborella','trichopoda'],
+	'orysa' => ['Oryza','sativa'],
+	'prupe' => ['Prunus','persica'],
+	'solly' => ['Solanum','lycopersicum'],
+	'vitvi' => ['Vitis','vinifera'],
+	'zeama' => ['Zea','mays'],
 ];
 function gene_linkout_json($gene) {
     $species_prefix = substr($gene, 0, 5);
