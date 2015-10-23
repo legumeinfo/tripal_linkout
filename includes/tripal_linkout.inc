@@ -40,7 +40,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
 
     if ($genus == 'Glycine' && $species == 'max') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/glyma.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/glyma.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
 
@@ -68,7 +68,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/phavu.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/phavu.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -82,7 +82,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/lotja.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lotja.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -94,7 +94,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
 	$gene = preg_replace('/_gene$/','',$gene);
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/cicar.' . $gene . '_gene/',
+            'href' => '/lis_context_viewer/index.html#/search/cicar.' . $gene . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -106,7 +106,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
 	$gene = preg_replace('/_gene$/','',$gene);
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/cajca.' . $gene . '_gene/',
+            'href' => '/lis_context_viewer/index.html#/search/cajca.' . $gene . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -116,7 +116,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/vigra.' . $gene ,
+            'href' => '/lis_context_viewer/index.html#/search/vigra.' . $gene ,
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -126,7 +126,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/medtr.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/medtr.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -170,7 +170,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/aradu.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/aradu.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
@@ -180,7 +180,7 @@ function tripal_linkout_json($genus,$species,$gene,$transcript) {
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
         $link[] = array(
-            'href' => '/lis_gene_families/chado/context_viewer/search/araip.' . $gene . '/',
+            'href' => '/lis_context_viewer/index.html#/search/araip.' . $gene . '/',
             'text' => 'Find similar genomic contexts for : ' . $gene,
         );
         $link[] = array(
