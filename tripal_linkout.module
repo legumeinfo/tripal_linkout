@@ -16,12 +16,20 @@ function tripal_linkout_help($path, $arg) {
 function tripal_linkout_menu() {
     $items = array();
     // create a route for viewing json of all phylonodes having this phylotree_id
+    // components of the URL are genus species gene_name transcript_name
     $items['phylotree_links/%/%/%/%/json'] = array(
         'page callback' => 'tripal_linkout_json',
         'page arguments' => array(1, 2, 3, 4),
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );
+    $items['phylotree_links/%/json'] = array(
+        'page callback' => 'family_representative_linkout_json',
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE // allow all anonymous http clients
+    );
+    //used by context viewer, which has only the gene name to linkout with at this time
     $items['gene_links/%/json'] = array(
         'page callback' => 'gene_linkout_json',
         'page arguments' => array(1),
