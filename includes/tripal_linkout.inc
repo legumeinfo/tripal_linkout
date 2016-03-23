@@ -50,6 +50,9 @@ SQL;
         $args = array(':family_representative' => $family_representative);
         $result = chado_query($sql, $args);
         $fields = $result->fetchAssoc();
+	//in what follows, the gene_name will typically not want the gensp. prefix, though this will be
+	//readded where need be
+	$fields['gene_name'] = substr($fields['gene_name'], 6);
 	full_gene_linkout_json($fields['genus'],$fields['species'],$fields['gene_name'],$fields['gene_uniquename'],$family_representative);
 }
 
