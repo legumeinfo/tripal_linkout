@@ -23,9 +23,9 @@ function tripal_linkout_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );
-    $items['phylotree_links/%/json'] = array(
+    $items['phylotree_links/%/%/%/json'] = array(
         'page callback' => 'family_representative_linkout_json',
-        'page arguments' => array(1),
+        'page arguments' => array(1, 2, 3),
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );

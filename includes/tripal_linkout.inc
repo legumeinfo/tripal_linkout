@@ -9,22 +9,22 @@
  */
 //FIXME: a dreadful maintenance hack. putting in for now to bridge the context viewer to use of this service, but not sure it has the needed genus species data
 const TRIPAL_LINKOUT_SPECIES_LOOKUP = [
-	'medtr' => ['Medicago','truncatula'],
-	'lotja' => ['Lotus','japonicus'],
-	'cicar' => ['Cicer','arietinum'],
-	'glyma' => ['Glycine','max'],
-	'phavu' => ['Phaseolus','vulgaris'],
-	'cajca' => ['Cajanus','cajan'],
-	'vigra' => ['Vigna','radiata'],
-	'aradu' => ['Arachis','duranensis'],
-	'araip' => ['Arachis','ipaensis'],
-	'arath' => ['Arabidopsis','thaliana'],
-	'ambtr' => ['Amborella','trichopoda'],
-	'orysa' => ['Oryza','sativa'],
-	'prupe' => ['Prunus','persica'],
-	'solly' => ['Solanum','lycopersicum'],
-	'vitvi' => ['Vitis','vinifera'],
-	'zeama' => ['Zea','mays'],
+    'medtr' => ['Medicago','truncatula'],
+    'lotja' => ['Lotus','japonicus'],
+    'cicar' => ['Cicer','arietinum'],
+    'glyma' => ['Glycine','max'],
+    'phavu' => ['Phaseolus','vulgaris'],
+    'cajca' => ['Cajanus','cajan'],
+    'vigra' => ['Vigna','radiata'],
+    'aradu' => ['Arachis','duranensis'],
+    'araip' => ['Arachis','ipaensis'],
+    'arath' => ['Arabidopsis','thaliana'],
+    'ambtr' => ['Amborella','trichopoda'],
+    'orysa' => ['Oryza','sativa'],
+    'prupe' => ['Prunus','persica'],
+    'solly' => ['Solanum','lycopersicum'],
+    'vitvi' => ['Vitis','vinifera'],
+    'zeama' => ['Zea','mays'],
 ];
 function gene_linkout_json($gene) {
     $species_prefix = substr($gene, 0, 5);
@@ -35,39 +35,40 @@ function gene_linkout_json($gene) {
     tripal_linkout_json($genus, $species, $gene, '');
 }
 
-function family_representative_linkout_json($family_representative) {
-	//find the gene by use of the "family representative" (ie label used for the phylonode, 
-	//typically a polypeptide name (we stole this trick from the phylotree module)
+function family_representative_linkout_json($genus, $species, $family_representative) {
+    //find the gene by use of the "family representative" (ie label used for the phylonode, 
+    //typically a polypeptide name (we stole this trick from the phylotree module)
         $sql = <<<SQL
-          SELECT f.name AS gene_name, f.uniquename AS gene_uniquename, o.genus AS genus, o.species AS species
-          FROM chado.featureprop fp, chado.feature f, chado.organism o
+          SELECT f.name AS gene_name, f.uniquename AS gene_uniquename
+          FROM chado.featureprop fp, chado.feature f
           WHERE fp.type_id = (SELECT cvterm_id FROM chado.cvterm
                               WHERE NAME = 'family representative')
           AND fp.value = :family_representative
           AND fp.feature_id = f.feature_id
-          AND f.organism_id = o.organism_id
 SQL;
         $args = array(':family_representative' => $family_representative);
         $result = chado_query($sql, $args);
         $fields = $result->fetchAssoc();
-	//in what follows, the gene_name will typically not want the gensp. prefix, though this will be
-	//readded where need be
-	$fields['gene_name'] = substr($fields['gene_name'], 6);
-	full_gene_linkout_json($fields['genus'],$fields['species'],$fields['gene_name'],$fields['gene_uniquename'],$family_representative);
+    //in what follows, the gene_name will typically not want the gensp. prefix, though this will be
+    //readded where need be
+    $fields['gene_name'] = substr($fields['gene_name'], 6);
+    $family_representative = substr($family_representative, 6);
+    full_gene_linkout_json($genus,$species,$fields['gene_name'],$fields['gene_uniquename'],$family_representative);
 }
 
 //simply preserve the signature that did not take the gene_uniquename for now
 function tripal_linkout_json($genus,$species,$gene_name,$transcript_name) {
-	full_gene_linkout_json($genus,$species,$gene_name,'',$transcript_name);
+    full_gene_linkout_json($genus,$species,$gene_name,'',$transcript_name);
 }
 
 function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$transcript_name) {
     $link =  [];
-    $link[] = array(
+    if (isset($gene_uniquename)) {
+        $link[] = array(
             'href' => '/feature/'.$genus.'/'.$species.'/gene/'.$gene_uniquename,
             'text' => 'View LIS gene page for : ' . $gene_name,
         );
-
+    }
     if ($genus == 'Glycine' && $species == 'max') {
 
         $link[] = array(
@@ -123,7 +124,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Cicer' && $species == 'arietinum') {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
-	$gene_name = preg_replace('/_gene$/','',$gene_name);
+    $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/cicar.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene_name,
@@ -135,7 +136,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
-	$gene_name = preg_replace('/_gene$/','',$gene_name);
+    $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/cajca.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts for : ' . $gene_name,
@@ -220,6 +221,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );        
     }
     else if ($genus == 'Arabidopsis' && $species == 'thaliana') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $link[] = array(
             'href' => 'http://www.araport.org/locus/' . $gene_name,
             'text' => 'view at Arabidopsis Information Portal: ' . $gene_name,
@@ -234,7 +236,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Zea' && $species == 'mays') {
-	$gene_name = preg_replace('/_P\d+$/','',$gene_name);
+        $gene_name = preg_replace('/_P\d+$/','',$transcript_name);
         $link[] = array(
             'href' => 'http://maizegdb.org/gene_center/gene?id=' . $gene_name,
             'text' => 'view at MaizeGDB: ' . $gene_name,
@@ -249,16 +251,18 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Oryza' && $species == 'sativa') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $link[] = array(
             'href' => 'http://rice.plantbiology.msu.edu/cgi-bin/gbrowse/rice/?name=' . $gene_name,
             'text' => 'view at MSU: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3301&searchText=' . $gene_name,
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5017&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
         );
     }
     else if ($genus == 'Vitis' && $species == 'vinifera') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $link[] = array(
             'href' => 'http://www.genoscope.cns.fr/cgi-bin/ggb/vitis/12X/gbrowse/vitis/?name=' . $gene_name,
             'text' => 'view at Genoscope: ' . $gene_name,
@@ -269,6 +273,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Solanum' && $species == 'lycopersicum') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $link[] = array(
             'href' => 'http://solgenomics.net/jbrowse/current/?data=data%2Fjson%2FSL2.50&loc=' . $gene_name . '&tracks=DNA%2Cgene_models&highlight=',
             'text' => 'view at Sol Genomics Network: ' . $gene_name,
@@ -279,15 +284,16 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Prunus' && $species == 'persica') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $link[] = array(
-            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=2295&searchText=' . $gene_name,
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4909&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
         );
     }
     else if ($genus == 'Amborella' && $species == 'trichopoda') {
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4851&searchText=' . $transcript_name,
-            'text' => 'view at Phytozome: ' . $gene_name,
+            'text' => 'view at Phytozome: ' . $transcript_name,
         );
     }
 
