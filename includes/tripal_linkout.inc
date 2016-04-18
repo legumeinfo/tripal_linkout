@@ -7,32 +7,26 @@
 /**
  * This version takes the gene "name", infers the species from the 5-letter prefix and delegates to the more fully specified version
  */
-//FIXME: a dreadful maintenance hack. putting in for now to bridge the context viewer to use of this service, but not sure it has the needed genus species data
-const TRIPAL_LINKOUT_SPECIES_LOOKUP = [
-    'medtr' => ['Medicago','truncatula'],
-    'lotja' => ['Lotus','japonicus'],
-    'cicar' => ['Cicer','arietinum'],
-    'glyma' => ['Glycine','max'],
-    'phavu' => ['Phaseolus','vulgaris'],
-    'cajca' => ['Cajanus','cajan'],
-    'vigra' => ['Vigna','radiata'],
-    'aradu' => ['Arachis','duranensis'],
-    'araip' => ['Arachis','ipaensis'],
-    'arath' => ['Arabidopsis','thaliana'],
-    'ambtr' => ['Amborella','trichopoda'],
-    'orysa' => ['Oryza','sativa'],
-    'prupe' => ['Prunus','persica'],
-    'solly' => ['Solanum','lycopersicum'],
-    'vitvi' => ['Vitis','vinifera'],
-    'zeama' => ['Zea','mays'],
-];
 function gene_linkout_json($gene) {
-    $species_prefix = substr($gene, 0, 5);
-  //  error_log("species prefix is " + $species_prefix);
+    //find auxiliary info given the gene name
+    //typically a polypeptide name (we stole this trick from the phylotree module)
+        $sql = <<<SQL
+          SELECT f.uniquename AS gene_uniquename, fp.value AS family_representative, o.genus AS genus, o.species AS species
+          FROM chado.featureprop fp, chado.feature f, chado.organism o
+          WHERE fp.type_id = (SELECT cvterm_id FROM chado.cvterm
+                              WHERE NAME = 'family representative')
+          AND fp.feature_id = f.feature_id
+          AND o.organism_id = f.organism_id
+          AND f.name = :gene
+SQL;
+        $args = array(':gene' => $gene);
+        $result = chado_query($sql, $args);
+        $fields = $result->fetchAssoc();
+    //in what follows, the gene_name will typically not want the gensp. prefix, though this will be
+    //readded where need be
+    $fields['family_representative'] = substr($fields['family_representative'], 6);
     $gene = substr($gene, 6);
-    $genus = TRIPAL_LINKOUT_SPECIES_LOOKUP[$species_prefix][0];
-    $species = TRIPAL_LINKOUT_SPECIES_LOOKUP[$species_prefix][1];
-    tripal_linkout_json($genus, $species, $gene, '');
+    full_gene_linkout_json($fields['genus'], $fields['species'], $gene, $fields['gene_uniquename'], $fields['family_representative']);
 }
 
 function family_representative_linkout_json($genus, $species, $family_representative) {
@@ -54,11 +48,6 @@ SQL;
     $fields['gene_name'] = substr($fields['gene_name'], 6);
     $family_representative = substr($family_representative, 6);
     full_gene_linkout_json($genus,$species,$fields['gene_name'],$fields['gene_uniquename'],$family_representative);
-}
-
-//simply preserve the signature that did not take the gene_uniquename for now
-function tripal_linkout_json($genus,$species,$gene_name,$transcript_name) {
-    full_gene_linkout_json($genus,$species,$gene_name,'',$transcript_name);
 }
 
 function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$transcript_name) {
