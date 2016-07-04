@@ -314,7 +314,7 @@ SQL;
     $gene_list = implode(",", $genes);
     $link[] = array(
         'href' => '/lis_context_viewer/index.html#/basic/'.$gene_list,
-        'text' => 'view genome contexts for given genes',
+        'text' => 'View Genome Contexts for given genes',
         'famreps' => $famreps
     );
     drupal_json_output($link);  
