@@ -290,5 +290,35 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     drupal_exit();
 }
 
+function quote_string($str) {
+    return "'".$str."'";
+}
+
+function famreps_linkout_json() {
+    $q = drupal_get_query_parameters();
+    $famreps = implode(",",array_map("quote_string", explode(",",$q['famreps'])));
+    //find the gene by use of the "family representative" (ie label used for the phylonode, 
+    //typically a polypeptide name (we stole this trick from the phylotree module)
+        $sql = <<<SQL
+          SELECT f.name AS gene_name
+          FROM chado.featureprop fp, chado.feature f
+          WHERE fp.type_id = (SELECT cvterm_id FROM chado.cvterm
+                              WHERE NAME = 'family representative')
+          AND fp.value IN ( $famreps )
+          AND fp.feature_id = f.feature_id
+SQL;
+    #$args = array(':family_representative' => $famreps);
+    #$result = chado_query($sql, $args);
+    $result = chado_query($sql);
+    $genes = $result->fetchCol();
+    $gene_list = implode(",", $genes);
+    $link[] = array(
+        'href' => '/lis_context_viewer/index.html#/basic/'.$gene_list,
+        'text' => 'view genome contexts for given genes',
+        'famreps' => $famreps
+    );
+    drupal_json_output($link);  
+    drupal_exit();
+}
 
 ?>

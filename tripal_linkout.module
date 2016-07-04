@@ -36,6 +36,12 @@ function tripal_linkout_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );
+    //used by context viewer, which has only the gene name to linkout with at this time
+    $items['famreps_links'] = array(
+        'page callback' => 'famreps_linkout_json',
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE // allow all anonymous http clients
+    );
 
     return $items;
 
