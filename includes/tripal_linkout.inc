@@ -4,6 +4,17 @@
  * Menu callbacks.
  */
 
+function handle_relative_links($links) {
+    $http_host = $_SERVER[HTTP_HOST];
+    $retval = [];
+    foreach ($links as $link) {
+        if (substr($link['href'], 0, 5) != 'http:') {
+            $link['href'] = 'http://'. $http_host . $link['href'];
+        }
+        $retval[] = $link;
+    }
+    return $retval;
+}
 /**
  * This version takes the gene "name", infers the species from the 5-letter prefix and delegates to the more fully specified version
  */
@@ -62,7 +73,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
 
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/glyma.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
 
         $link[] = array(
@@ -90,7 +101,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/phavu.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3253&searchText=' . $gene_name,
@@ -104,7 +115,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/lotja.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => '/gbrowse_lotja3.0?query=name=' . $gene_name,
@@ -116,7 +127,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/cicar.' . $gene_name . '_gene/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => '/gbrowse_cicar1.0?query=name=' . $gene_name,
@@ -128,7 +139,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/cajca.' . $gene_name . '_gene/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => '/gbrowse_cajca1.0?query=name=' . $gene_name,
@@ -138,7 +149,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/vigra.' . $gene_name ,
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => '/gbrowse_vigra1.0?query=name=' . $gene_name,
@@ -148,7 +159,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Medicago' && $species == 'truncatula') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/medtr.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://medicago.jcvi.org/medicago/jbrowse/?data=data%2Fjson%2Fmedicago&loc='.$transcript_name.'&tracks=DNA%2Cgene_models&highlight=',
@@ -192,7 +203,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/aradu.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_aradu1.0?query=name=' . $gene_name . ';dbid=gene_models',
@@ -202,7 +213,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/araip.' . $gene_name . '/',
-            'text' => 'Find similar genomic contexts for : ' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene_name . ';dbid=gene_models',
@@ -286,9 +297,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
 
-    drupal_json_output($link);  
+    drupal_json_output(handle_relative_links($link));  
     drupal_exit();
 }
+
 
 function quote_string($str) {
     return "'".$str."'";
@@ -317,7 +329,7 @@ SQL;
         'text' => 'View Genome Contexts for given genes',
         'famreps' => $famreps
     );
-    drupal_json_output($link);  
+    drupal_json_output(handle_relative_links($link));  
     drupal_exit();
 }
 
