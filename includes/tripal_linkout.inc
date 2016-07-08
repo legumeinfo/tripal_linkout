@@ -77,6 +77,11 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
 
         $link[] = array(
+            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View LegumeMine page for : ' . $gene_name,
+        );
+
+        $link[] = array(
             'href' => 'http://www.soybase.org/sbt/search/search_results.php?category=FeatureName&search_term=' . $gene_name,
             'text' => 'view at SoyBase: ' . $gene_name,
         );
@@ -102,6 +107,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/phavu.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View LegumeMine page for : ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3253&searchText=' . $gene_name,
@@ -162,6 +171,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
+            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View LegumeMine page for : ' . $gene_name,
+        );
+        $link[] = array(
             'href' => 'http://medicago.jcvi.org/medicago/jbrowse/?data=data%2Fjson%2Fmedicago&loc='.$transcript_name.'&tracks=DNA%2Cgene_models&highlight=',
             'text' => 'view at JCVI: ' . $transcript_name,
         );
@@ -206,6 +219,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
+            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View LegumeMine page for : ' . $gene_name,
+        );
+        $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_aradu1.0?query=name=' . $gene_name . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene_name,
         );            
@@ -216,12 +233,21 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
+            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View LegumeMine page for : ' . $gene_name,
+        );
+        $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene_name . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene_name,
         );        
     }
     else if ($genus == 'Arabidopsis' && $species == 'thaliana') {
         $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+        $context_viewer_name = 'arath.Col.'.$gene_name;
+        $link[] = array(
+            'href' => 'http://legumefederaytion.org/lis_context_viewer/index.html#/search/lfo/' . $context_viewer_name,
+            'text' => 'Find similar genomic contexts at LegFed for : ' . $gene_name,
+        );
         $link[] = array(
             'href' => 'http://www.araport.org/locus/' . $gene_name,
             'text' => 'view at Arabidopsis Information Portal: ' . $gene_name,
