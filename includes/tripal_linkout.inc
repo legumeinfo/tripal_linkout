@@ -245,7 +245,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $context_viewer_name = 'arath.Col.'.$gene_name;
         $link[] = array(
-            'href' => 'http://legumefederaytion.org/lis_context_viewer/index.html#/search/lfo/' . $context_viewer_name,
+            'href' => 'http://legumefederation.org/lis_context_viewer/index.html#/search/lfo/' . $context_viewer_name,
             'text' => 'Find similar genomic contexts at LegFed for : ' . $gene_name,
         );
         $link[] = array(
