@@ -15,6 +15,14 @@ function handle_relative_links($links) {
     }
     return $retval;
 }
+
+//needed in the CORS context with the cache-busting strategy we've adopted
+function set_response_headers() {
+    drupal_add_http_header('Access-Control-Allow-Headers', 'Pragma');
+    drupal_add_http_header('Access-Control-Allow-Headers', 'Cache-Control', TRUE);
+    drupal_add_http_header('Access-Control-Allow-Headers', 'If-Modified-Since', TRUE);
+}
+
 /**
  * This version takes the gene "name", infers the species from the 5-letter prefix and delegates to the more fully specified version
  */
@@ -323,6 +331,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
 
+    set_response_headers();
     drupal_json_output(handle_relative_links($link));  
     drupal_exit();
 }
@@ -355,6 +364,7 @@ SQL;
         'text' => 'View Genome Contexts for given genes',
         'famreps' => $famreps
     );
+    set_response_headers();
     drupal_json_output(handle_relative_links($link));  
     drupal_exit();
 }
