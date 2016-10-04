@@ -163,6 +163,26 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene_name,
         );
     }
+    else if ($genus == 'Vigna' && $species == 'angularis') {
+        $link[] = array(
+            'href' => '/lis_context_viewer/index.html#/search/vigan.' . $gene_name ,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/gbrowse_vigan3.0?query=name=' . $gene_name,
+            'text' => 'view at LIS Va3.0 GBrowse: ' . $gene_name,
+        );
+    }
+    else if ($genus == 'Lupinus' && $species == 'angustifolius') {
+        $link[] = array(
+            'href' => '/lis_context_viewer/index.html#/search/lupan.' . $gene_name ,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/genomes/gbrowse/La1.0?query=name=' . $gene_name,
+            'text' => 'view at LIS La1.0 GBrowse: ' . $gene_name,
+        );
+    }
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/vigra.' . $gene_name ,
