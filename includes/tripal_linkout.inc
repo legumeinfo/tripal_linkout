@@ -179,7 +179,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/genomes/gbrowse/La1.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/La1.0?query=name=lupan.' . $gene_name,
             'text' => 'view at LIS La1.0 GBrowse: ' . $gene_name,
         );
     }
