@@ -5,7 +5,7 @@
  */
 
 function handle_relative_links($links) {
-    $http_host = $_SERVER[HTTP_HOST];
+    $http_host = $_SERVER['HTTP_HOST'];
     $retval = [];
     foreach ($links as $link) {
         if (substr($link['href'], 0, 5) != 'http:') {
