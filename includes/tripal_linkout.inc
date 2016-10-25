@@ -357,35 +357,54 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
 }
 
 
-function quote_string($str) {
-    return "'".$str."'";
-}
-
+/*
+ * the api endpoint /famreps_links?famreps=feature1,feature2,etc...
+ * is served by this function famreps_linkout_json().
+ * accepts GET or POST.
+ * Note: if using POST, use content-type:application/x-www-form-urlencoded
+ * because PHP 5.6 will barf upon content-type:application/json.
+ * see https://www.bram.us/2014/10/26/php-5-6-automatically-populating-http_raw_post_data-is-deprecated-and-will-be-removed-in-a-future-version/
+ */ 
 function famreps_linkout_json() {
-    $q = drupal_get_query_parameters();
-    $famreps = implode(",",array_map("quote_string", explode(",",$q['famreps'])));
-    //find the gene by use of the "family representative" (ie label used for the phylonode, 
-    //typically a polypeptide name (we stole this trick from the phylotree module)
-        $sql = <<<SQL
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // if content was posted sent with application/json, this would be best:
+        // $encoded = file_get_contents("php://input", TRUE);
+        // $q = drupal_json_decode($encoded, TRUE);
+        // however in the workaround described above, we are forced
+        // use x-www-form-urlencoded
+        $encoded = filter_input(INPUT_POST, 'famreps', FILTER_SANITIZE_ENCODED);
+        $q = explode('%2C', $encoded);
+    }
+    else {
+        $encoded = filter_input(INPUT_GET, 'famreps', FILTER_SANITIZE_ENCODED);
+        $q = explode('%2C', $encoded);
+    }
+    
+    //find the gene by use of the "family representative" (ie label
+    //used for the phylonode, typically a polypeptide name (we stole
+    //this trick from the phylotree module)
+    $sql = <<<SQL
           SELECT f.name AS gene_name
           FROM chado.featureprop fp, chado.feature f
           WHERE fp.type_id = (SELECT cvterm_id FROM chado.cvterm
                               WHERE NAME = 'family representative')
-          AND fp.value IN ( $famreps )
+          AND fp.value IN (:famreps)
           AND fp.feature_id = f.feature_id
 SQL;
-    #$args = array(':family_representative' => $famreps);
-    #$result = chado_query($sql, $args);
-    $result = chado_query($sql);
+    // use chado_query(template, args) which 'will make sure that the
+    // user input is santized and safe through type-checking and
+    // escaping.'
+    $args = array(':famreps' => $q);
+    $result = chado_query($sql, $args);
     $genes = $result->fetchCol();
     $gene_list = implode(",", $genes);
     $link[] = array(
         'href' => '/lis_context_viewer/index.html#/basic/'.$gene_list,
         'text' => 'View Genome Contexts for given genes',
-        'famreps' => $famreps
+        'famreps' => implode(',', $q)
     );
     set_response_headers();
-    drupal_json_output(handle_relative_links($link));  
+    drupal_json_output(handle_relative_links($link));
     drupal_exit();
 }
 
