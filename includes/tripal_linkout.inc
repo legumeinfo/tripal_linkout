@@ -8,7 +8,8 @@ function handle_relative_links($links) {
     $http_host = $_SERVER['HTTP_HOST'];
     $retval = [];
     foreach ($links as $link) {
-        if (substr($link['href'], 0, 5) != 'http:') {
+        #if (substr($link['href'], 0, 5) != 'http:') {
+        if (substr($link['href'], 0, 1) == '/') {
             $link['href'] = 'http://'. $http_host . $link['href'];
         }
         $retval[] = $link;
@@ -133,6 +134,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/lotja.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://lotus.au.dk/view/gene/' . $gene_name,
+            'text' => 'view at Lotus Base: ' . $gene_name,
         );
         $link[] = array(
             'href' => '/gbrowse_lotja3.0?query=name=' . $gene_name,
