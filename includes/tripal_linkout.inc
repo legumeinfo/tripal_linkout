@@ -80,7 +80,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     if ($genus == 'Glycine' && $species == 'max') {
 
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/glyma.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/glyma.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
 
@@ -113,7 +113,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/phavu.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/phavu.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -131,7 +131,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lotja.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/lotja.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -143,7 +143,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/cicar.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -155,7 +155,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/cajca.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/cajca.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -165,7 +165,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Vigna' && $species == 'angularis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/vigan.' . $gene_name ,
+            'href' => '/lis_context_viewer/index.html#/search/lis/vigan.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -175,7 +175,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Lupinus' && $species == 'angustifolius') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lupan.' . $gene_name ,
+            'href' => '/lis_context_viewer/index.html#/search/lis/lupan.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -185,7 +185,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/vigra.' . $gene_name ,
+            'href' => '/lis_context_viewer/index.html#/search/lis/vigra.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -195,7 +195,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/medtr.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/medtr.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -243,7 +243,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/aradu.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/aradu.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -257,7 +257,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/araip.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/index.html#/search/lis/araip.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
