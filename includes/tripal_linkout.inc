@@ -10,7 +10,7 @@ function handle_relative_links($links) {
     foreach ($links as $link) {
         #if (substr($link['href'], 0, 5) != 'http:') {
         if (substr($link['href'], 0, 1) == '/') {
-            $link['href'] = 'http://'. $http_host . $link['href'];
+            $link['href'] = '//'. $http_host . $link['href'];
         }
         $retval[] = $link;
     }
