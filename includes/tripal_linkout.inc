@@ -222,7 +222,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
 */
         $link[] = array(
-            'href' => 'http://www.medicagohapmap.org/fgb2/gbrowse/mt35/?name=' . $gene_name,
+            'href' => 'http://www.medicagohapmap.org/fgb2/gbrowse/mt40/?name=' . $gene_name,
             'text' => 'view at Mt HapMap: ' . $gene_name,
         );
         $link[] = array(
