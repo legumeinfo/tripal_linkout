@@ -155,6 +155,24 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'href' => '/gbrowse_cicar1.0?query=name=' . $gene_name,
             'text' => 'view at LIS Ca1.0 GBrowse: ' . $gene_name,
         );
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/chickpeamine/portal.do?class=Gene&externalids='. $gene_name . '_gene',
+            'text' => 'view in ChickpeaMine: ' . $gene_name . '_gene',
+        );
+    }
+    else if ($genus == 'Cicer' && $species == 'arietinum_ICC4958') {
+        $link[] = array(
+            'href' => '/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/genomes/gbrowse/cicar.ICC4958.v2.0?query=name=cicar.' . $gene_name,
+            'text' => 'view at LIS Cicer arietinum ICC 4958 genome v2.0 GBrowse: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/chickpeamine/portal.do?class=Gene&externalids='. $gene_name,
+            'text' => 'view in ChickpeaMine: ' . $gene_name,
+        );
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
