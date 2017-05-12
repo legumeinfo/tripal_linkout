@@ -208,8 +208,16 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'View LegumeMine page for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'http://medicago.jcvi.org/medicago/jbrowse/?data=data%2Fjson%2Fmedicago&loc='.$transcript_name.'&tracks=DNA%2Cgene_models&highlight=',
-            'text' => 'view at JCVI: ' . $transcript_name,
+            'href' => 'http://medicmine.jcvi.org/medicmine/portal.do?class=Gene&externalids=' . $gene_name ,
+            'text' => 'View MedicMine page for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'http://www.medicagogenome.org/feature/' . $gene_name ,
+            'text' => 'View MTGD Mt4.0 Tripal page for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'http://www.medicagogenome.org/jbrowse/?data=medicago&loc='.$transcript_name,
+            'text' => 'View at MTGD Mt4.0 JBrowse : ' . $transcript_name,
         );
         $link[] = array(
             'href' => '/gbrowse_medtr4.0?query=name=' . $gene_name,
