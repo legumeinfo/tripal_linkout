@@ -122,7 +122,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'View LegumeMine page for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=3253&searchText=' . $gene_name,
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5084&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
         );
         $link[] = array(
