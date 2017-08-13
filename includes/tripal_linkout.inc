@@ -186,6 +186,20 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene_name,
         );
     }
+    else if ($genus == 'Vigna' && $species == 'unguiculata') {
+        $link[] = array(
+            'href' => '/lis_context_viewer/index.html#/search/lis/vigun.' . $gene_name ,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/gbrowse_vigun1.0?query=name=' . $gene_name,
+            'text' => 'view at LIS Vu1.0 GBrowse: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5235&searchText=' . $gene_name,
+            'text' => 'view at Phytozome: ' . $gene_name,
+        );
+    }
     else if ($genus == 'Vigna' && $species == 'angularis') {
         $link[] = array(
             'href' => '/lis_context_viewer/index.html#/search/lis/vigan.' . $gene_name ,
