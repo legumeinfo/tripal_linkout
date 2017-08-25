@@ -126,7 +126,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at Phytozome: ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_phavu1.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Pv1.0?query=name=' . $gene_name,
             'text' => 'view at LIS Pv1.0 GBrowse: ' . $gene_name,
         );
     }
@@ -140,7 +140,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at Lotus Base: ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_lotja3.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Lj3.0?query=name=' . $gene_name,
             'text' => 'view at LIS Lj3.0 GBrowse: ' . $gene_name,
         );
     }
@@ -152,7 +152,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_cicar1.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/cicar.CDCFrontier.v1.0?query=name=' . $gene_name,
             'text' => 'view at LIS Ca1.0 GBrowse: ' . $gene_name,
         );
         $link[] = array(
@@ -182,8 +182,22 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_cajca1.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Cc1.0?query=name=' . $gene_name,
             'text' => 'view at LIS Cc1.0 GBrowse: ' . $gene_name,
+        );
+    }
+    else if ($genus == 'Trifolium' && $species == 'pratense') {
+        $link[] = array(
+            'href' => '/lis_context_viewer/index.html#/search/lis/tripr.' . $gene_name ,
+            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/genomes/gbrowse/Tp2.0?query=name=' . $gene_name,
+            'text' => 'view at LIS Tp2.0 GBrowse: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5081&searchText=' . $gene_name,
+            'text' => 'view at Phytozome: ' . $gene_name,
         );
     }
     else if ($genus == 'Vigna' && $species == 'unguiculata') {
@@ -192,8 +206,8 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_vigun1.0?query=name=' . $gene_name,
-            'text' => 'view at LIS Vu1.0 GBrowse: ' . $gene_name,
+            'href' => '/genomes/gbrowse/vigun.IT97K-499-35.gnm1?query=name=' . $gene_name,
+            'text' => 'view at LIS vigun.IT97K-499-35.gnm1 GBrowse: ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5235&searchText=' . $gene_name,
@@ -206,7 +220,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_vigan3.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Va3.0?query=name=' . $gene_name,
             'text' => 'view at LIS Va3.0 GBrowse: ' . $gene_name,
         );
     }
@@ -226,7 +240,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_vigra1.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Vr1.0?query=name=' . $gene_name,
             'text' => 'view at LIS Vr1.0 GBrowse: ' . $gene_name,
         );
     }
@@ -252,7 +266,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'View at MTGD Mt4.0 JBrowse : ' . $transcript_name,
         );
         $link[] = array(
-            'href' => '/gbrowse_medtr4.0?query=name=' . $gene_name,
+            'href' => '/genomes/gbrowse/Mt4.0?query=name=' . $gene_name,
             'text' => 'view at LIS Mt4.0 GBrowse: ' . $gene_name,
         );
 /*
