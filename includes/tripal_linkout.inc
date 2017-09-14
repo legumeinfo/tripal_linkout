@@ -94,7 +94,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'href' => 'http://www.soybase.org/sbt/search/search_results.php?category=FeatureName&search_term=' . $gene_name,
             'text' => 'view at SoyBase: ' . $gene_name,
         );
-        
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/glym.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
+            'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
+        );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4433&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
@@ -156,8 +159,12 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS Ca1.0 GBrowse: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://mines.legumeinfo.org/chickpeamine/portal.do?class=Gene&externalids='. $gene_name . '_gene',
-            'text' => 'view in ChickpeaMine: ' . $gene_name . '_gene',
+            'href' => 'https://mines.legumeinfo.org/chickpeamine/portal.do?class=Gene&externalids=CDCFrontier.'. $gene_name,
+            'text' => 'view in ChickpeaMine: ' . $gene_name ,
+        );
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
     else if ($genus == 'Cicer' && $species == 'arietinum_ICC4958') {
@@ -172,6 +179,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'https://mines.legumeinfo.org/chickpeamine/portal.do?class=Gene&externalids='. $gene_name,
             'text' => 'view in ChickpeaMine: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
@@ -212,6 +223,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5235&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/vigun.' . $gene_name .'?sources=lis,lfo&neighbors=15' ,
+            'text' => 'Find similar genomic contexts at LegumeFederation for : ' . $gene_name,
         );
     }
     else if ($genus == 'Vigna' && $species == 'angularis') {
@@ -278,6 +293,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'http://www.medicagohapmap.org/fgb2/gbrowse/mt40/?name=' . $gene_name,
             'text' => 'view at Mt HapMap: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/medtr.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
+            'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4432&searchText=' . $gene_name,
