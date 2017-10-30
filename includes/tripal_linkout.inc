@@ -81,7 +81,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     if ($genus == 'Glycine' && $species == 'max') {
 
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/glyma.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/glyma.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
 
@@ -95,7 +95,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at SoyBase: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/glym.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/glym.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
@@ -117,7 +117,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/phavu.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/phavu.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -135,7 +135,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/lotja.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/lotja.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -151,7 +151,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -163,13 +163,13 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view in ChickpeaMine: ' . $gene_name ,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
     else if ($genus == 'Cicer' && $species == 'arietinum_ICC4958') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name,
+            'href' => '/lis_context_viewer/#/search/lis/cicar.' . $gene_name,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -181,7 +181,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view in ChickpeaMine: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
@@ -189,7 +189,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
     $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/cajca.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/#/search/lis/cajca.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -199,7 +199,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Trifolium' && $species == 'pratense') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/tripr.' . $gene_name ,
+            'href' => '/lis_context_viewer/#/search/lis/tripr.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -213,7 +213,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Vigna' && $species == 'unguiculata') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/vigun.' . $gene_name ,
+            'href' => '/lis_context_viewer/#/search/lis/vigun.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -225,13 +225,13 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at Phytozome: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/vigun.' . $gene_name .'?sources=lis,lfo&neighbors=15' ,
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/vigun.' . $gene_name .'?sources=lis,lfo&neighbors=15' ,
             'text' => 'Find similar genomic contexts at LegumeFederation for : ' . $gene_name,
         );
     }
     else if ($genus == 'Vigna' && $species == 'angularis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/vigan.' . $gene_name ,
+            'href' => '/lis_context_viewer/#/search/lis/vigan.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -241,7 +241,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Lupinus' && $species == 'angustifolius') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/lupan.' . $gene_name ,
+            'href' => '/lis_context_viewer/#/search/lis/lupan.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -251,7 +251,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/vigra.' . $gene_name ,
+            'href' => '/lis_context_viewer/#/search/lis/vigra.' . $gene_name ,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -261,7 +261,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/medtr.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/medtr.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -295,7 +295,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at Mt HapMap: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/index.html#/search/lis/medtr.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/medtr.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
@@ -321,7 +321,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/aradu.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/aradu.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -335,7 +335,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
         $link[] = array(
-            'href' => '/lis_context_viewer/index.html#/search/lis/araip.' . $gene_name . '/',
+            'href' => '/lis_context_viewer/#/search/lis/araip.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -351,7 +351,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $context_viewer_name = 'arath.Col.'.$gene_name;
         $link[] = array(
-            'href' => 'http://legumefederation.org/lis_context_viewer/index.html#/search/lfo/' . $context_viewer_name,
+            'href' => 'http://legumefederation.org/lis_context_viewer/#/search/lfo/' . $context_viewer_name,
             'text' => 'Find similar genomic contexts at LegFed for : ' . $gene_name,
         );
         $link[] = array(
@@ -477,8 +477,8 @@ SQL;
     $genes = $result->fetchCol();
     $gene_list = implode(",", $genes);
     $link[] = array(
-        'href' => '/lis_context_viewer/index.html#/basic/'.$gene_list,
-        'text' => 'View Genome Contexts for given genes',
+        'href' => '/lis_context_viewer/#/multi/'.$gene_list,
+        'text' => 'View Multi-aligned Genome Contexts for given genes',
         'famreps' => implode(',', $q)
     );
     set_response_headers();
