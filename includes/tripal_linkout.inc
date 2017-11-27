@@ -481,6 +481,14 @@ SQL;
         'text' => 'View Multi-aligned Genome Contexts for given genes',
         'famreps' => implode(',', $q)
     );
+    /*
+    //can't wait to uncomment this baby!
+    $gene_list = implode("%0A", $genes);
+    $link[] = array(
+        'href' => 'https://intermine.legumefederation.org/legumemine/bag.do?text='.$gene_list,
+        'text' => 'Create List in LegumeMine for Given Genes',
+    );
+    */
     set_response_headers();
     drupal_json_output(handle_relative_links($link));
     drupal_exit();
