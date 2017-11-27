@@ -483,7 +483,7 @@ SQL;
     //can't wait to uncomment this baby!
     $gene_list = implode("%0A", $genes);
     $link[] = array(
-        'href' => 'https://intermine.legumefederation.org/legumemine/bag.do?text='.$gene_list,
+        'href' => 'https://intermine.legumefederation.org/legumemine/bag.do?type=Gene&text='.$gene_list,
         'text' => 'Create List in LegumeMine for Given Genes',
     );
     */
