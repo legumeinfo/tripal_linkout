@@ -186,8 +186,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
-        #hack: from the trees, the _gene is missing, but from the context viewer it is present
-    $gene_name = preg_replace('/_gene$/','',$gene_name);
         $link[] = array(
             'href' => '/lis_context_viewer/#/search/lis/cajca.' . $gene_name . '_gene/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
