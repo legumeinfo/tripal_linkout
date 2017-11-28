@@ -147,11 +147,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS Lj3.0 GBrowse: ' . $gene_name,
         );
     }
-    else if ($genus == 'Cicer' && $species == 'arietinum') {
-        #hack: from the trees, the _gene is missing, but from the context viewer it is present
-    $gene_name = preg_replace('/_gene$/','',$gene_name);
+    else if ($genus == 'Cicer' && $species == 'arietinum_CDCFrontier') {
+        $gene_name = preg_replace('/^CDCFrontier\./','',$gene_name);
         $link[] = array(
-            'href' => '/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/#/search/lis/cicar.CDCFrontier.' . $gene_name,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -163,13 +162,13 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view in ChickpeaMine: ' . $gene_name ,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.CDCFrontier.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
     else if ($genus == 'Cicer' && $species == 'arietinum_ICC4958') {
         $link[] = array(
-            'href' => '/lis_context_viewer/#/search/lis/cicar.' . $gene_name,
+            'href' => '/lis_context_viewer/#/search/lis/cicar.ICC4958.' . $gene_name,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
@@ -181,7 +180,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view in ChickpeaMine: ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.ICC4958.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
