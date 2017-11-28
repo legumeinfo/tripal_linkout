@@ -162,7 +162,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view in ChickpeaMine: ' . $gene_name ,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.CDCFrontier.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.CDCFrontier.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
@@ -186,7 +186,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
         $link[] = array(
-            'href' => '/lis_context_viewer/#/search/lis/cajca.' . $gene_name . '_gene/',
+            'href' => '/lis_context_viewer/#/search/lis/cajca.' . $gene_name . '/',
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
