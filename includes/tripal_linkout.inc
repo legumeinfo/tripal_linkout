@@ -67,7 +67,9 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     //in what follows, the gene_name will typically not want the gensp. prefix, though this will be
     //readded where need be
     $gensp = substr($gene_name, 0, 6);
+    if (isset($gene_name)) {
     $gene_name = substr($gene_name, 6);
+    }
     $transcript_name = substr($transcript_name, 6);
     if (isset($gene_uniquename)) {
         $link[] = array(
