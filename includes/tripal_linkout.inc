@@ -168,7 +168,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
         */
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.ICC4958.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/lis_context_viewer/#/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
