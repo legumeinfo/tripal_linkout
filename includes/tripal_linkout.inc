@@ -85,7 +85,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     if (isset($gene_name)) {
         $link[] = array(
-            'href' => 'https://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gensp.$gene_name,
+            'href' => 'https://mines.legumeinfo.org/legumemine/portal.do?class=Gene&externalids=' . $gensp.$gene_name,
             'text' => 'View LegumeMine gene report for : ' . $gene_name,
         );
     }
@@ -421,7 +421,7 @@ SQL;
     );
     $gene_list = implode("%0A", $genes);
     $link[] = array(
-        'href' => 'https://intermine.legumefederation.org/legumemine/bag.do?type=Gene&text='.$gene_list,
+        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?type=Gene&text='.$gene_list,
         'text' => 'Create List in LegumeMine for given Genes',
     );
     set_response_headers();
