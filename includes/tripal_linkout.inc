@@ -424,6 +424,10 @@ SQL;
         'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?type=Gene&text='.$gene_list,
         'text' => 'Create List in LegumeMine for given Genes',
     );
+    $link[] = array(
+        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?type=Protein&text='.implode("%0A", $q),
+        'text' => 'Create List in LegumeMine for given Proteins',
+    );
     set_response_headers();
     drupal_json_output(handle_relative_links($link));
     drupal_exit();
