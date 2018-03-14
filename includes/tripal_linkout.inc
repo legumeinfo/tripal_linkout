@@ -421,11 +421,11 @@ SQL;
     );
     $gene_list = implode("%0A", $genes);
     $link[] = array(
-        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?type=Gene&text='.$gene_list,
+        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Gene&text='.$gene_list,
         'text' => 'Create List in LegumeMine for given Genes',
     );
     $link[] = array(
-        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?type=Protein&text='.implode("%0A", $q),
+        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Protein&text='.implode("%0A", $q),
         'text' => 'Create List in LegumeMine for given Proteins',
     );
     set_response_headers();
