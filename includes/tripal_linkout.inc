@@ -222,6 +222,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
+        $gene_name = preg_replace('/^A17_HM341\./','',$gene_name);
         $link[] = array(
             'href' => 'http://medicmine.jcvi.org/medicmine/portal.do?class=Gene&externalids=' . $gene_name ,
             'text' => 'View MedicMine page for : ' . $gene_name,
