@@ -68,7 +68,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     //readded where need be
     $gensp = substr($gene_name, 0, 6);
     if (isset($gene_name)) {
-    $gene_name = substr($gene_name, 6);
+        $gene_name = substr($gene_name, 6);
     }
     $transcript_name = substr($transcript_name, 6);
     if (isset($gene_uniquename)) {
@@ -284,6 +284,14 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene_name . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene_name,
+        );        
+    }
+    else if ($genus == 'Arachis' && $species == 'hypogaea') {
+        $browser_name = 'Arahy.'.$gene_name;
+        $gene_name = 'arahy.'.$gene_name;
+        $link[] = array(
+            'href' => 'https://peanutbase.org/gbrowse_peanut1.0?query=name=' . $browser_name, // . ';dbid=gene_models',
+            'text' => 'view at PeanutBase: ' . $browser_name,
         );        
     }
     else if ($genus == 'Arabidopsis' && $species == 'thaliana') {
