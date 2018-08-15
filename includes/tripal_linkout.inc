@@ -437,6 +437,17 @@ SQL;
         'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Protein&text='.implode("%0A", $q),
         'text' => 'Create List in LegumeMine for given Proteins',
     );
+    $arath_list = array_map(function($value) {
+        return preg_replace('/arath\.([A-Z0-9]+)\.[0-9]*/', '$1', $value);
+        }, array_filter($q, function($value) {
+            return (substr($value,0,6) === 'arath.' ? true : false);
+        }));
+    if (count($arath_list) > 0) {
+        $link[] = array(
+            'href' => 'https://apps.araport.org/thalemine/bag.do?subtab=upload&type=Gene&text='.implode("%0A", $arath_list),
+            'text' => 'Create List in ThaleMine for given Genes',
+        );
+    }
     set_response_headers();
     drupal_json_output(handle_relative_links($link));
     drupal_exit();
