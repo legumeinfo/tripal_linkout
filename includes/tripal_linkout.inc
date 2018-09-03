@@ -440,21 +440,26 @@ SQL;
     $args = array(':famreps' => $q);
     $result = chado_query($sql, $args);
     $genes = $result->fetchCol();
-    $gene_list = implode(",", $genes);
-    $link[] = array(
-        'href' => '/lis_context_viewer/#/multi/'.$gene_list,
-        'text' => 'View Multi-aligned Genome Contexts for given genes',
-        'famreps' => implode(',', $q)
-    );
-    $gene_list = implode("%0A", $genes);
-    $link[] = array(
-        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Gene&text='.$gene_list,
-        'text' => 'Create List in LegumeMine for given Genes',
-    );
-    $link[] = array(
-        'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Protein&text='.implode("%0A", $q),
-        'text' => 'Create List in LegumeMine for given Proteins',
-    );
+    if ($genes) {
+        $gene_list = implode(",", $genes);
+        $link[] = array(
+            'href' => '/lis_context_viewer/#/multi/'.$gene_list,
+            'text' => 'View Multi-aligned Genome Contexts for given genes',
+            'famreps' => implode(',', $q)
+        );
+        $gene_list = implode("%0A", $genes);
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Gene&text='.$gene_list,
+            'text' => 'Create List in LegumeMine for given Genes',
+        );
+        //in theory whether we have legume proteins in the input might be
+        //independent of whether we can resolve legume genes from it; in
+        //practice, it is not.
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/legumemine/bag.do?subtab=upload&type=Protein&text='.implode("%0A", $q),
+            'text' => 'Create List in LegumeMine for given Proteins',
+        );
+    }
     $arath_list = array_map(function($value) {
         return preg_replace('/arath\.([A-Z0-9]+)\.[0-9]*/', '$1', $value);
         }, array_filter($q, function($value) {
@@ -464,6 +469,17 @@ SQL;
         $link[] = array(
             'href' => 'https://apps.araport.org/thalemine/bag.do?subtab=upload&type=Gene&text='.implode("%0A", $arath_list),
             'text' => 'Create List in ThaleMine for given Genes',
+        );
+    }
+    $zeama_list = array_map(function($value) {
+        return preg_replace('/zeama\.([A-Z0-9]+)_P[0-9]*$/', '$1', $value);
+        }, array_filter($q, function($value) {
+            return (substr($value,0,6) === 'zeama.' ? true : false);
+        }));
+    if (count($zeama_list) > 0) {
+        $link[] = array(
+            'href' => 'http://maizemine.rnet.missouri.edu:8080/maizemine/bag.do?subtab=upload&type=Gene&text='.implode("%0A", $zeama_list),
+            'text' => 'Create List in MaizeMine for given Genes',
         );
     }
     set_response_headers();
