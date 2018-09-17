@@ -443,7 +443,7 @@ SQL;
     if ($genes) {
         $gene_list = implode(",", $genes);
         $link[] = array(
-            'href' => '/lis_context_viewer/#/multi/'.$gene_list,
+            'href' => '/lis_context_viewer/multi/'.$gene_list,
             'text' => 'View Multi-aligned Genome Contexts for given genes',
             'famreps' => implode(',', $q)
         );
