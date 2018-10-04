@@ -82,6 +82,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'href' => '/lis_context_viewer/search/lis/' . $gensp.$gene_name,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
+        $link[] = array(
+            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/' . $gensp . $gene_name . '?sources=lfo&regexp=arath&neighbors=20&order=edit',
+            'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
+        );
     }
     if (isset($gene_name)) {
         $link[] = array(
@@ -94,10 +98,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'http://www.soybase.org/sbt/search/search_results.php?category=FeatureName&search_term=' . $gene_name,
             'text' => 'view at SoyBase: ' . $gene_name,
-        );
-        $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/glyma.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
-            'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4433&searchText=' . $gene_name,
@@ -258,10 +258,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'http://www.medicagohapmap.org/fgb2/gbrowse/mt40/?name=' . $gene_name,
             'text' => 'view at Mt HapMap: ' . $gene_name,
-        );
-        $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/medtr.' . $gene_name . '?sources=lis%2Clfo&regexp=arath&neighbors=20&order=edit',
-            'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=4432&searchText=' . $gene_name,
