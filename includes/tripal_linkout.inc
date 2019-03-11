@@ -83,7 +83,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/' . $gensp . $gene_name . '?sources=lfo&regexp=arath&neighbors=20&order=edit',
+            'href' => 'https://legumefederation.org/gcv/phytozome_10_2/search/lis/' . $gensp . $gene_name . '?sources=lfo&regexp=arath&neighbors=20&order=edit',
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
     }
@@ -117,10 +117,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Phaseolus' && $species == 'vulgaris') {
         $link[] = array(
-            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
-            'text' => 'View LegumeMine page for : ' . $gene_name,
-        );
-        $link[] = array(
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5084&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
         );
@@ -152,7 +148,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
         */
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/gcv/phytozome_10_2/search/lis/cicar.' . $gene_name . '_gene?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
         $link[] = array(
@@ -172,7 +168,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
         */
         $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
+            'href' => 'https://legumefederation.org/gcv/phytozome_10_2/search/lis/cicar.' . $gene_name . '?sources=lis%2Ccicre&regexp=cicre|cicar|medtr&order=edit',
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
@@ -203,11 +199,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'href' => 'http://phytozome.jgi.doe.gov/pz/portal.html#!results?search=0&crown=1&star=0&method=5235&searchText=' . $gene_name,
             'text' => 'view at Phytozome: ' . $gene_name,
         );
-        //why do I have this special case; should we refactor and get it for everyone?
-        $link[] = array(
-            'href' => 'https://legumefederation.org/lis_context_viewer/search/lis/vigun.' . $gene_name .'?sources=lis,lfo&neighbors=15' ,
-            'text' => 'Find similar genomic contexts at LegumeFederation for : ' . $gene_name,
-        );
     }
     else if ($genus == 'Vigna' && $species == 'angularis') {
         $link[] = array(
@@ -228,10 +219,6 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );
     }
     else if ($genus == 'Medicago' && $species == 'truncatula') {
-        $link[] = array(
-            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
-            'text' => 'View LegumeMine page for : ' . $gene_name,
-        );
         $gene_name = preg_replace('/^A17_HM341\./','',$gene_name);
         $link[] = array(
             'href' => 'http://medicmine.jcvi.org/medicmine/portal.do?class=Gene&externalids=' . $gene_name ,
@@ -282,19 +269,11 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     else if ($genus == 'Arachis' && $species == 'duranensis') {
         $link[] = array(
-            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
-            'text' => 'View LegumeMine page for : ' . $gene_name,
-        );
-        $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_aradu1.0?query=name=' . $gene_name . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene_name,
         );            
     }
     else if ($genus == 'Arachis' && $species == 'ipaensis') {
-        $link[] = array(
-            'href' => 'http://intermine.legumefederation.org/legumemine/portal.do?class=Gene&externalids=' . $gene_name ,
-            'text' => 'View LegumeMine page for : ' . $gene_name,
-        );
         $link[] = array(
             'href' => 'http://peanutbase.org/gbrowse_araip1.0?query=name=' . $gene_name . ';dbid=gene_models',
             'text' => 'view at PeanutBase: ' . $gene_name,
@@ -312,7 +291,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         $context_viewer_name = 'arath.Col.'.$gene_name;
         $link[] = array(
-            'href' => 'http://legumefederation.org/lis_context_viewer/search/lfo/' . $context_viewer_name,
+            'href' => 'http://legumefederation.org/gcv/phytozome_10_2/search/lfo/' . $context_viewer_name,
             'text' => 'Find similar genomic contexts at LegFed for : ' . $gene_name,
         );
         $link[] = array(
