@@ -287,8 +287,11 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at PeanutBase: ' . $browser_name,
         );        
     }
-    else if ($genus == 'Arabidopsis' && $species == 'thaliana') {
-        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+    else if (($genus == 'Arabidopsis' && $species == 'thaliana') || preg_match('/^arath/',$gensp)) {
+        if (!isset($gene_name)) {
+            $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+        }
+        $gene_name=preg_replace('/^Col\./','',$gene_name);
         $context_viewer_name = 'arath.Col.'.$gene_name;
         $link[] = array(
             'href' => 'http://legumefederation.org/gcv/phytozome_10_2/search/lfo/' . $context_viewer_name,
