@@ -288,7 +288,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         );        
     }
     else if ($genus == 'Pisum' && $species == 'sativum') {
-        $browser_name = preg_replace('/^pissa.Cameor.gnm1.ann1./','',$gene_name);
+        $browser_name = preg_replace('/^Cameor.gnm1.ann1./','',$gene_name);
         $link[] = array(
             'href' => 'https://urgi.versailles.inra.fr/jbrowse/gmod_jbrowse/?data=myData%2FPea%2FPsat_v1a%2Fdata&loc='.$browser_name.'&tracks=DNA%2Cgaps%2Cannotation.v1a%2CLD.cultivars%2CLD.landrace%2Cannotation.eugene%2Cannotation.v1a%2CRepeat.REPET&highlight=',
             'text' => 'view at INRA JBrowse: ' . $browser_name,
