@@ -32,12 +32,12 @@ function gene_linkout_json($gene) {
     //typically a polypeptide name (we stole this trick from the phylotree module)
         $sql = <<<SQL
           SELECT f.uniquename AS gene_uniquename, fp.value AS family_representative, o.genus AS genus, o.species AS species
-          FROM chado.featureprop fp, chado.feature f, chado.organism o
-          WHERE fp.type_id = (SELECT cvterm_id FROM chado.cvterm
+          FROM chado.feature f
+          JOIN chado.organism o ON o.organism_id = f.organism_id
+          LEFT JOIN chado.featureprop fp ON fp.feature_id = f.feature_id 
+            AND fp.type_id = (SELECT cvterm_id FROM chado.cvterm
                               WHERE NAME = 'family representative')
-          AND fp.feature_id = f.feature_id
-          AND o.organism_id = f.organism_id
-          AND f.name = :gene
+          WHERE f.name = :gene
 SQL;
         $args = array(':gene' => $gene);
         $result = chado_query($sql, $args);
