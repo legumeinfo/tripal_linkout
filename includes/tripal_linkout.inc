@@ -213,6 +213,12 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS La1.0 GBrowse: ' . $gene_name,
         );
     }
+    else if ($genus == 'Lupinus' && $species == 'albus') {
+        $link[] = array(
+            'href' => 'https://www.whitelupin.fr/browser/?data=Lupinus_albus&tracks=DNA%2Cmain_annotation&highlight=&loc=' . $gene_name,
+            'text' => 'view at whitelupin.fr JBrowse: ' . $gene_name,
+        );
+    }
     else if ($genus == 'Vigna' && $species == 'radiata') {
         $link[] = array(
             'href' => '/genomes/gbrowse/Vr1.0?query=name=' . $gene_name,
