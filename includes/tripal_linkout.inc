@@ -34,10 +34,11 @@ function gene_linkout_json($gene) {
           SELECT f.uniquename AS gene_uniquename, fp.value AS family_representative, o.genus AS genus, o.species AS species
           FROM chado.feature f
           JOIN chado.organism o ON o.organism_id = f.organism_id
+          JOIN chado.cvterm cvt ON f.type_id = cvt.cvterm_id AND cvt.name = 'gene'
           LEFT JOIN chado.featureprop fp ON fp.feature_id = f.feature_id 
             AND fp.type_id = (SELECT cvterm_id FROM chado.cvterm
                               WHERE NAME = 'family representative')
-          WHERE f.name = :gene
+          WHERE f.name = :gene 
 SQL;
         $args = array(':gene' => $gene);
         $result = chado_query($sql, $args);
