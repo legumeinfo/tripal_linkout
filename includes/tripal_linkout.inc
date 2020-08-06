@@ -126,6 +126,16 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'view at LIS Pv1.0 GBrowse: ' . $gene_name,
         );
     }
+    else if ($genus == 'Phaseolus' && $species == 'lunatus') {
+        $link[] = array(
+            'href' => 'https://phytozome-next.jgi.doe.gov/report/gene/Plunatus_V1/' . $gene_name . '.v1',
+            'text' => 'view at Phytozome: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/genomes/gbrowse/phalu.G27455.gnm1?query=name=phalu.' . $gene_name,
+            'text' => 'view at LIS Pl1.0 GBrowse: ' . $gene_name,
+        );
+    }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
         $link[] = array(
             'href' => 'https://lotus.au.dk/view/gene/' . $gene_name,
