@@ -46,7 +46,6 @@ SQL;
     if (isset($fields['gene_uniquename'])) {
         full_gene_linkout_json($fields['genus'], $fields['species'], $fields['gene_name'], $fields['gene_uniquename'], $fields['family_representative']);
     }
-    #bit of a hack until the linkout pages at legfed can support a transcript version too
     else {
         gene_linkout_for_transcript_json($gene);
     }
@@ -68,7 +67,15 @@ SQL;
         $args = array(':transcript' => $transcript);
         $result = chado_query($sql, $args);
         $fields = $result->fetchAssoc();
-    gene_linkout_json($fields['gene_uniquename']);
+    if (isset($fields['gene_uniquename'])) {
+        gene_linkout_json($fields['gene_uniquename']);
+    }
+    #return empty json appropriately
+    else {
+        set_response_headers();
+        drupal_json_output(handle_relative_links([]));
+        drupal_exit();
+    }
 }
 
 function family_representative_linkout_json($genus, $species, $family_representative) {
