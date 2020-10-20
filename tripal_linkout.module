@@ -31,6 +31,13 @@ function tripal_linkout_menu() {
         'type' => MENU_CALLBACK,
         'access callback' => TRUE // allow all anonymous http clients
     );
+    //used by blast service, for hits to transcript/protein dbs
+    $items['gene_links_for_transcript/%/json'] = array(
+        'page callback' => 'gene_linkout_for_transcript_json',
+        'page arguments' => array(1),
+        'type' => MENU_CALLBACK,
+        'access callback' => TRUE // allow all anonymous http clients
+    );
     //used by context viewer, which has only the gene name to linkout with at this time
     $items['famreps_links'] = array(
         'page callback' => 'famreps_linkout_json',

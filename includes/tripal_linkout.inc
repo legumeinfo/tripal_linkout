@@ -25,7 +25,7 @@ function set_response_headers() {
 }
 
 /**
- * This version takes the gene "name", infers the species from the 5-letter prefix and delegates to the more fully specified version
+ * This version takes the gene "name" (or "uniquename"), looks up associated info from the db and delegates to the more fully specified version
  */
 function gene_linkout_json($gene) {
     //find auxiliary info given the gene name
@@ -43,7 +43,32 @@ SQL;
         $args = array(':gene' => $gene);
         $result = chado_query($sql, $args);
         $fields = $result->fetchAssoc();
-    full_gene_linkout_json($fields['genus'], $fields['species'], $fields['gene_name'], $fields['gene_uniquename'], $fields['family_representative']);
+    if (isset($fields['gene_uniquename'])) {
+        full_gene_linkout_json($fields['genus'], $fields['species'], $fields['gene_name'], $fields['gene_uniquename'], $fields['family_representative']);
+    }
+    #bit of a hack until the linkout pages at legfed can support a transcript version too
+    else {
+        gene_linkout_for_transcript_json($gene);
+    }
+}
+
+/**
+ * This version takes the transcript "name" (or "uniquename"), looks up associated gene from the db and delegates to the gene-based version
+ */
+function gene_linkout_for_transcript_json($transcript) {
+    //find gene given the transcript name or uniquename
+        $sql = <<<SQL
+            SELECT g.uniquename AS gene_uniquename
+            FROM chado.feature g
+            JOIN chado.feature_relationship fr ON g.feature_id = fr.object_id
+            JOIN chado.cvterm cvt ON fr.type_id = cvt.cvterm_id AND cvt.name = 'part_of'
+            JOIN chado.feature t ON t.feature_id = fr.subject_id
+            WHERE t.name = :transcript OR t.uniquename = :transcript
+SQL;
+        $args = array(':transcript' => $transcript);
+        $result = chado_query($sql, $args);
+        $fields = $result->fetchAssoc();
+    gene_linkout_json($fields['gene_uniquename']);
 }
 
 function family_representative_linkout_json($genus, $species, $family_representative) {
