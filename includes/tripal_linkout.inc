@@ -100,10 +100,16 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     //in what follows, the gene_name will typically not want the gensp. prefix, though this will be
     //readded where need be
     $gensp = substr($gene_name, 0, 6);
-    if (isset($gene_name)) {
-        $gene_name = substr($gene_name, 6);
+    //hack: we are moving towards not prefixing names with "yuck-lite". but we need to support older stuff where we still have it...
+    if (preg_match('/^[a-z]{5}\./', $gensp)) {
+        if (isset($gene_name)) {
+            $gene_name = substr($gene_name, 6);
+        }
+        $transcript_name = substr($transcript_name, 6);
     }
-    $transcript_name = substr($transcript_name, 6);
+    else {
+        $gensp = "";
+    }
     if (isset($gene_uniquename)) {
         $link[] = array(
             'href' => '/feature/'.$genus.'/'.$species.'/gene/'.$gene_uniquename,
@@ -349,6 +355,30 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => 'https://urgi.versailles.inra.fr/jbrowse/gmod_jbrowse/?data=myData%2FPea%2FPsat_v1a%2Fdata&loc='.$browser_name.'&tracks=DNA%2Cgaps%2Cannotation.v1a%2CLD.cultivars%2CLD.landrace%2Cannotation.eugene%2Cannotation.v1a%2CRepeat.REPET&highlight=',
             'text' => 'view at INRA JBrowse: ' . $browser_name,
+        );        
+    }
+    else if ($genus == 'Aeschynomene' && $species == 'evenia') {
+        #$browser_name = preg_replace('/^aesev.CIAT22838.gnm1.ann0./','',$gene_name);
+        $link[] = array(
+            'href' => '/genomes/gbrowse/gb2/gbrowse/aesev.CIAT22838.gnm1?query=name=' . $gene_name,
+            'text' => 'view at LIS GBrowse: ' . $gene_name,
+        );        
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/jointvetchmine/gene:' . $gene_uniquename,
+            'text' => 'view at JointvetchMine: ' . $gene_name,
+        );        
+    }
+    else if ($genus == 'Medicago' && $species == 'sativa') {
+        #$browser_name = preg_replace('/^medsa.XinJiangDaYe.gnm1.ann1./','',$gene_name);
+        $link[] = array(
+            'href' => '/genomes/gbrowse/gb2/gbrowse/medsa.XinJiangDaYe.gnm1/?query=name=medsa.' . $gene_name,
+            'text' => 'view at LIS GBrowse: ' . $gene_name,
+        );        
+        //temporary hack until Sam gets with the dots program
+        $gene_uniquename = preg_replace('/MS\./', 'MS_', $gene_uniquename);
+        $link[] = array(
+            'href' => 'https://mines.legumeinfo.org/medicmine/gene:' . $gene_uniquename,
+            'text' => 'view at MedicMine: ' . $gene_name,
         );        
     }
     else if (($genus == 'Arabidopsis' && $species == 'thaliana') || preg_match('/^arath/',$gensp)) {
