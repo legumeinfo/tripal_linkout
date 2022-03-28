@@ -130,10 +130,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
     }
-    if (isset($gene_name)) {
+    if (isset($gene_uniquename)) {
         $link[] = array(
-            'href' => 'https://mines.legumeinfo.org/legumemine/portal.do?class=Gene&externalids=' . $gensp.$gene_name,
-            'text' => 'View LegumeMine gene report for : ' . $gene_name,
+            'href' => 'https://mines.legumeinfo.org/legumemine/gene:' . $gene_uniquename,
+            'text' => 'View LegumeMine gene report for : ' . $gene_uniquename,
         );
     }
     if ($genus == 'Glycine' && $species == 'max') {
@@ -176,6 +176,16 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         $link[] = array(
             'href' => '/genomes/gbrowse/phalu.G27455.gnm1?query=name=phalu.' . $gene_name,
             'text' => 'view at LIS Pl1.0 GBrowse: ' . $gene_name,
+        );
+    }
+    else if ($genus == 'Phaseolus' && $species == 'acutifolius') {
+        $link[] = array(
+            'href' => 'https://phytozome-next.jgi.doe.gov/report/gene/Pacutifolius_v1_0/' . $gene_name . '.v1',
+            'text' => 'view at Phytozome: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => '/genomes/gbrowse/phaac.Frijol_Bayo.gnm1?query=name=' . $gene_name,
+            'text' => 'view at LIS Pa1.0 GBrowse: ' . $gene_name,
         );
     }
     else if ($genus == 'Lotus' && $species == 'japonicus') {
