@@ -130,10 +130,10 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
         );
     }
-    if (isset($gene_name)) {
+    if (isset($gene_uniquename)) {
         $link[] = array(
-            'href' => 'https://mines.legumeinfo.org/legumemine/portal.do?class=Gene&externalids=' . $gensp.$gene_name,
-            'text' => 'View LegumeMine gene report for : ' . $gene_name,
+            'href' => 'https://mines.legumeinfo.org/legumemine/gene:' . $gene_uniquename,
+            'text' => 'View LegumeMine gene report for : ' . $gene_uniquename,
         );
     }
     if ($genus == 'Glycine' && $species == 'max') {
