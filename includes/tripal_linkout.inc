@@ -118,13 +118,14 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
     }
     if (isset($gene_name)) {
         $link[] = array(
-            'href' => '/gcv2/gene;lis=' . $gensp.$gene_name,
+            'href' => 'https://gcv.legumeinfo.org/gene;lis=' . $gene_uniquename,
             'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name,
         );
-        $link[] = array(
-            'href' => '/lis_context_viewer/search/lis/' . $gensp.$gene_name,
-            'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name . ' (GCV 1.0)',
-        );
+        #deprecated!
+        #$link[] = array(
+            #'href' => '/lis_context_viewer/search/lis/' . $gensp.$gene_name,
+            #'text' => 'Find similar genomic contexts at LIS for : ' . $gene_name . ' (GCV 1.0)',
+        #);
         $link[] = array(
             'href' => 'https://legumefederation.org/gcv/phytozome_10_2/search/lis/' . $gensp . $gene_name . '?sources=lfo&regexp=arath&neighbors=20&order=edit',
             'text' => 'Look for Arabidopsis thaliana microsyntenic region for ' . $gene_name,
