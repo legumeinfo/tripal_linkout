@@ -236,6 +236,39 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
             'text' => 'Look for Cicer reticulatum microsyntenic region for ' . $gene_name,
         );
     }
+    else if ($genus == 'Cicer' && $species == 'arietinum') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+        $link[] = array(
+            'href' => 'https://cicer.legumeinfo.org/tools/gcv/gene;cicer=' . $gene_name,
+            'text' => 'View in GCV: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://lis.ncgr.org/cicermine/gene:'. $gene_name,
+            'text' => 'view in CicerMine: ' . $gene_name ,
+        );
+    }
+    else if ($genus == 'Cicer' && $species == 'echinospermum') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+        $link[] = array(
+            'href' => 'https://cicer.legumeinfo.org/tools/gcv/gene;cicer=' . $gene_name,
+            'text' => 'View in GCV: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://lis.ncgr.org/cicermine/gene:'. $gene_name,
+            'text' => 'view in CicerMine: ' . $gene_name ,
+        );
+    }
+    else if ($genus == 'Cicer' && $species == 'reticulatum') {
+        $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
+        $link[] = array(
+            'href' => 'https://cicer.legumeinfo.org/tools/gcv/gene;cicer=' . $gene_name,
+            'text' => 'View in GCV: ' . $gene_name,
+        );
+        $link[] = array(
+            'href' => 'https://lis.ncgr.org/cicermine/gene:'. $gene_name,
+            'text' => 'view in CicerMine: ' . $gene_name ,
+        );
+    }
     else if ($genus == 'Cajanus' && $species == 'cajan') {
         #hack: from the trees, the _gene is missing, but from the context viewer it is present
     $gene_name = preg_replace('/_gene$/','',$gene_name);
@@ -396,7 +429,7 @@ function full_gene_linkout_json($genus,$species,$gene_name,$gene_uniquename,$tra
         if (!isset($gene_name)) {
             $gene_name = preg_replace('/\.\d+$/','',$transcript_name);
         }
-        $gene_name=preg_replace('/^Col\./','',$gene_name);
+        $gene_name=preg_replace('/^arath\.Col\.gnm9\.ann10\./','',$gene_name);
         $context_viewer_name = 'arath.Col.'.$gene_name;
         $link[] = array(
             'href' => 'http://legumefederation.org/gcv/phytozome_10_2/search/lfo/' . $context_viewer_name,
